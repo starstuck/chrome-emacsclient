@@ -1,0 +1,7 @@
+{
+    "manifest_version": 2,
+    "name": "Chrome External Editor",
+    "description": "Open resource links in developer tools using external editor",
+    "version": "0.1.1",
+    "devtools_page": "devtools.html"
+}
