@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Chrome External Editor",
-    "description": "Open resource links in developer tools using external editor",
-    "version": "0.1.1",
+    "name": "Emacsclient",
+    "description": "Extension allows to open your source files from Chrome Devtools in Emacs. It connects Chrome to Emacs server.",
+    "version": "0.1.2",
     "devtools_page": "devtools.html"
 }
