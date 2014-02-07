@@ -1,17 +1,27 @@
 /*global chrome*/
 
-function handleOpenResource(resource, lineNo) {
-    alert('Resource opened: ' + resource.url + ':' + lineNo);
-    console.log('Asked to open resource: ', resource.url, lineNo);
-}
+/**
+ * TODO: Add some authentication token to improve security of connection. Somehow there should be way to
+ *       pair emacs and browser
+ */
+function EmacsClient() {
+    var host = 'localhost',
+        port = 8081;
 
-setTimeout(function() {
+    function visit(resource, lineNo) {
+        var req = new XMLHttpRequest();
+        req.open('POST', 'http://' + host + ':' + port + '/chromeserv/visit');
+        req.onerror = function() {
+            alert('There was error sending request to emacs: '  +req.statusText);
+        };
+        req.send([
+            'url=' + encodeURIComponent(resource.url),
+            'line=' + lineNo
+        ].join('&'));
+    };
 
-    chrome.devtools.panels.setOpenResourceHandler(handleOpenResource);
-    alert('extension loaded:' + chrome.devtools.panels.setOpenResourceHandler);
+    this.visit = visit;
+};
 
-}, 1000);
-
-
-//TODO: use chrome.devtools.inspectedWindow.onResourceContentCommitted.addListener to send updated
-// content to editor
+var client = new EmacsClient();
+chrome.devtools.panels.setOpenResourceHandler(client.visit);

@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Emacsclient",
+    "name": "Emacs Client",
     "description": "Extension allows to open your source files from Chrome Devtools in Emacs. It connects Chrome to Emacs server.",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "devtools_page": "devtools.html"
 }
