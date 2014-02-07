@@ -23,6 +23,11 @@ Right now extension is still in development and is not relased. You need to
 checkout git repository and add it to your browser via "Loadn unpacked extension..."
 button.
 
+Once you have extension installed you will be able to open resource link in
+emacs by choosing right option from link context menu. If you want to open links
+to resources in emacs by default, you can change setting "Open links in" in 
+"General" section of devtool settings.
+
 Extension requires small server running in Emacs which will listen to requests
 from Chrome Devtools. To run server you need to install `simple-httpd` package
 first. You can do that by calling in emacs
