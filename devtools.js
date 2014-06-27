@@ -6,7 +6,7 @@
  */
 function EmacsClient() {
     var host = 'localhost',
-        port = 8081;
+        port = 8080;
 
     function visit(resource, lineNo) {
         var req = new XMLHttpRequest();

@@ -32,11 +32,11 @@ Extension requires small server running in Emacs which will listen to requests
 from Chrome Devtools. To run server you need to install `simple-httpd` package
 first. You can do that by calling in emacs
 
-    M-x install-package
+    M-x package-install
 
 Emacs will ask you for package name, which is `simple-httpd`.
 
-After installation you will need to change default port to 8081. I find that default
+After installation you will need to change default port to 8080. I find that default
 `simple-httpd` port is often coliding with tomcat and other projects. You can use
 command
 

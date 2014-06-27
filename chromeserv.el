@@ -20,6 +20,11 @@ If file is not found in `compilation-search-path` then it will be opened via htt
       (setq this-dir (or (car search-dirs) spec-dir)
             search-dirs (cdr search-dirs)
             this-parts parts)
+      ; Strip potential top level paths to find common in path which exists on disk
+      (while (and this-parts 
+                  (not (file-exists-p (concat this-dir "/" (car this-parts)))))
+        (setq this-parts (cdr this-parts)))
+      ; Now try matching reminder of path
       (while (and (file-exists-p this-dir) this-parts)
         (setq this-dir (concat this-dir "/" (car this-parts))
               this-parts (cdr this-parts)))
@@ -31,9 +36,10 @@ If file is not found in `compilation-search-path` then it will be opened via htt
         (let ((win (get-buffer-window buffer)))
           (if win (select-window win)
             (switch-to-buffer buffer)))
-      (message "chromeserv-find-file could not find requested file (%s). Try adding project path to `compilation-search-path`. Meanwhile opened requested file from server in temp buffer." path)
       (browse-url-emacs url))
-    (goto-line line)))
+    (goto-line line)
+    (select-frame-set-input-focus (window-frame (selected-window)))))
+
 
 ;; Servlets
 
